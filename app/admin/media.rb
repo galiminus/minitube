@@ -66,11 +66,11 @@ ActiveAdmin.register Medium do
       row :user
       row :video do |record|
         video(width: 640, height: 480, controls: true) do
-          source(src: "https://s3.amazonaws.com/#{ENV['TEMPORARY_S3_BUCKET']}/#{record.temporary_key}")
+          source(src: "https://s3-#{ENV['TEMPORARY_S3_REGION']}.amazonaws.com/#{ENV['TEMPORARY_S3_BUCKET']}/#{record.temporary_key}")
         end
       end
       row :temporary_file do |record|
-        link_to "Download", "https://s3.amazonaws.com/#{ENV['TEMPORARY_S3_BUCKET']}/#{record.temporary_key}"
+        link_to "Download", "https://s3-#{ENV['TEMPORARY_S3_REGION']}.amazonaws.com/#{ENV['TEMPORARY_S3_BUCKET']}/#{record.temporary_key}"
       end
 
       row :thumbnail do |record|

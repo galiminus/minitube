@@ -107,7 +107,7 @@ class EncodeVideoJob < ApplicationJob
   protected
 
   def video_url
-    Shellwords.escape("https://s3.amazonaws.com/#{ENV['TEMPORARY_S3_BUCKET']}/#{@medium.temporary_key}")
+    Shellwords.escape("https://s3-#{ENV['TEMPORARY_S3_REGION']}.amazonaws.com/#{ENV['TEMPORARY_S3_BUCKET']}/#{@medium.temporary_key}")
   end
 
   def input_path
